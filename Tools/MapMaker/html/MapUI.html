@@ -1,0 +1,205 @@
+<HTML>
+<HEAD>
+	<TITLE>MapMaker: User Interface</TITLE>
+<meta name="description" content="MapMaker Online Documentation">
+<meta name="author" content="Lennart Steinke">
+<meta name="keywords" content="games, tile, map, rpg, crpg, programming, game programming">
+
+</HEAD>
+<BODY LINK ="#D00000"
+      VLINK="#A01010"
+      ALINK="#FF1010"
+
+      BGCOLOR="#FFFFFF"
+>
+<A Name="Top">
+<IMG SRC="MapLogoSmall.gif" WIDTH="150" HEIGHT="60" BORDER="0"></A>
+<Font Color="#4444cc">
+Back to <A Href="Mapindex.html">Index</A> | <A Href="MapBasics.html">Basics</A>
+</Font>
+
+<Center>
+<Table Border=0 CellPadding=0 Width="80%"><TR><TD>
+<P><BR><Center><Font Color="#4444cc"><H1>The User Interface</H1></Font></Center><P>
+
+Here's a reduced screen shot of a typical MapMaker screen. Click at the image to
+get further explanations.
+<P>
+<Center>
+<IMG SRC="MapScreen.gif" WIDTH="440" HEIGHT="332" LoSrc="MapScreenSmall.gif" BORDER="0" USEMAP="#Screen"></P>
+</Center>
+<MAP NAME="Screen">
+<AREA SHAPE=RECT COORDS="0,0,440,12" HREF="#TitleBar" ALT="The titlebar shows the name of the currently active document window">
+<AREA SHAPE=RECT COORDS="0,25,440,46" HREF="#Icons" ALT="The icon bar">
+<AREA SHAPE=RECT COORDS="3,46,266,196" HREF="#Map" ALT="Map Window">
+<AREA SHAPE=RECT COORDS="277,50,354,313" HREF="#Tiles" ALT="Tile Window">
+<AREA SHAPE=RECT COORDS="380,46,437,315" HREF="#Layers" ALT="Layer selection">
+</MAP>
+
+<A Name="TitleBar">
+<Font Color="#4444cc"><B>Titlebar</B></Font></A><BR>
+The titlebar shows the name of the currently active map window.<BR>
+<A Href="#Top"><IMG SRC="MapTop.gif" WIDTH="15" HEIGHT="19" BORDER="0"></A>
+<P>
+<A Name="Icons">
+<Font Color="#4444cc"><B>Icons</B></Font></A><BR>
+<Table Border=0 CellPadding=0 CellSpacing=0>
+<TR>
+    <TD Align=Right VAlign=Top><IMG SRC="MapFileIcons.gif" WIDTH="69" HEIGHT="22" BORDER="0"></TD>
+    <TH Width=10></TH>
+    <TD>Shortcuts for file new, open and save<p>
+
+<TR>
+    <TD Align=Right VAlign=Top><IMG SRC="MapUndoIcons.gif" WIDTH="45" HEIGHT="22" BORDER="0"></TD>
+    <TH Width=10></TH>
+    <TD>These are the Undo/ Redo buttons<P>
+    
+<TR>
+    <TD Align=Right VAlign=Top><IMG SRC="MapClipboardIcons.gif" WIDTH="69" HEIGHT="22" BORDER="0"><TD>
+    <TH Width=10></TH>
+    <TD>These buttons are shortcuts for the clipboard functions cut, copy and paste<P>
+
+<TR>
+    <TD Align=Right VAlign=Top><IMG SRC="MapSelModeIcon.gif" WIDTH="23" HEIGHT="22" BORDER="0"></TD>
+    <TH Width=10></TH>
+    <TD>Using this button, you can switch to selection mode, allowing you
+        to select rectangular portions of the map, and copy them to the clipboard<P>
+<TR>
+    <A  Name="Mode">
+    <TD Align=Right VAlign=Top><IMG SRC="MapTileModeIcon.gif" WIDTH="23" HEIGHT="22" BORDER="0"></TD></A>
+    <TH Width=10></TH>
+    <TD>This button switches to edit mode (which is the default), allowing
+        you to set tiles in the map, or to change the attributes of a cell.<P>
+<TR>
+    <A Name="AttrDraw">
+    <TD Align=Right VAlign=Top><IMG SRC="MapAttrDrawIcon.gif" WIDTH="23" HEIGHT="22" BORDER="0"></TD></A>
+    <TH Width=10></TH>
+    <TD>This button switches to attribute draw mode. While in this mode, you can "draw"
+        with the attributes currently selected, allowing you to set a lot of tiles to
+        the same attribute values.<P>
+        
+<TR>
+    <A Name="ReDraw">
+    <TD Align=Right VAlign=Top><IMG SRC="MapReDrawIcon.gif" WIDTH="23" HEIGHT="22" BORDER="0"></TD></A>
+    <TH Width=10></TH>
+    <TD>Redraw map. If the display gets garbled, try this button. If that doesn't
+        help, mail me. Hey, this is the beta version, after all. <P>
+<TR>
+    <A Name="TileMode">
+    <TD Align=Right VAlign=Top><IMG SRC="MapTileModeIcons.gif" WIDTH="46" HEIGHT="22" BORDER="0"></TD></A>
+    <TH Width=10></TH>
+    <TD>These buttons allow to switch from <A Href="#Layers">Layer selection</A> mode to
+        <A Href="#Attr">attribute</A> edit mode.
+        While in tile edit mode, you can set tiles at the current layer by left clicking
+        the map. In atttribute edit mode, you can change the attributes of a cell.<P>
+       
+<TR>
+    <A Name="LayerVis">
+    <TD Align=Right VAlign=Top><IMG SRC="MapLayerVisIcon.gif" WIDTH="23" HEIGHT="22" BORDER="0"></TD></A>
+    <TH Width=10></TH>
+    <TD>This button displays the <A Href="MapViewLayers.html">Visible Layers</A> dialog, allowing
+        you to select the layers of the map which should be visible or hidden.<P>
+
+<TR>
+    <A Name="Print">
+    <TD Align=Right VAlign=Top><IMG SRC="MapPrintIcon.gif" WIDTH="23" HEIGHT="22" BORDER="0"></TD></A>
+    <TH Width=10></TH>
+    <TD>This button will allow you to print the map. Printing is not possible with
+        MapMaker release 1.4pb. I'm working on it.<P>
+
+<TR>
+    <A Name="About">
+    <TD Align=Right VAlign=Top><IMG SRC="MapAboutIcon.gif" WIDTH="23" HEIGHT="22" BORDER="0"></TD></A>
+    <TH Width=10></TH>
+    <TD>This button displays the About dialog box.
+        
+       
+</TR></Table>
+<A Href="#Top"><IMG SRC="MapTop.gif" WIDTH="15" HEIGHT="19" BORDER="0"></A>
+<P>
+
+<A Name="Tiles">
+<Font Color="#4444cc"><B>Tile Window</B></Font></A><BR>
+The titlebar of this window shows the name of the Map it belongs to. If you're
+in edit mode, you can select a tile by clicking on it, and then draw with it on the map.
+<BR><A Href="#Top"><IMG SRC="MapTop.gif" WIDTH="15" HEIGHT="19" BORDER="0"></A>
+<P>
+
+
+<A name="Map">
+<Font Color="#4444cc"><B>Map Window</B></Font></A><BR>
+This window allows you to view and edit the map.
+<BR><A Href="#Top"><IMG SRC="MapTop.gif" WIDTH="15" HEIGHT="19" BORDER="0"></A>
+<P>
+
+
+<A Name="Layers">
+<Font Color="#4444cc"><B>Layer selection</B></Font></A><BR>
+The layer selection dialog bar consists of 4 radio buttons, allowing you to
+select the layer to edit. The <Font Color="#4444cc">Base</Font> layer is the first
+layer drawn, the <Font Color="#4444cc">Roof</Font> layer the last. Each layer will
+paint over those below it. So you can place a stone tile (object layer) on a
+grass tile (base layer). If you need more information on multi- layered maps,
+you should read the Tile FAQ, which can be found in the Web at the
+<A Href="http://www.geocities.com/SiliconValley/Vista/6774/TileBased.html">tile based section</A>
+of the Game Programming Galaxy.
+<BR><A Href="#Top"><IMG SRC="MapTop.gif" WIDTH="15" HEIGHT="19" BORDER="0"></A>
+<P>
+
+<A Name="Attr">
+<Font Color="#4444cc"><B>Cell Attributes</B></Font></A><BR>
+<Table Border=0>
+<TR>
+    <TD Align=Left Valign=Top>
+    Since the attribute dialog bar is relativly complex, I'll explain it in
+    morde detail. The first combobox, labeled <Font Color="#4444cc">Walkable Area</Font>,
+    allows you to set the walkabilty information of the cell. Using this information,
+    you can restrict the sprites to part of the tile. This can be usefull for roleplaying
+    and jump'n'run games.<BR>
+    <Font Color="#4444cc">Walk Special</Font> allows you to set additinal information
+    on the type of walking possible at this cell. This is mainly for rpgs and strategicals, here's a
+    short description of the possibilities:
+    <UL>
+    <LI>None - nothing special
+    <LI>Ice - the tile is frozen, player slides and glides at this position
+    <LI>Swamp - the tile is swampy. Player can only move only slowly
+    <LI>Water - there might be some kind of current, which can be set using the flags, or special attribute
+    <LI>Rock - player might need some kind of climbing equipment
+    <LI>Fall - used to indicate that the tile is aligned vertically and the player cannot
+        stand on it
+    </UL>
+
+    <BR>
+    The next 16 buttons toggle the corresponding bits in the ObjectFlags member of the
+    cell (button 15 sets/ clears the highest bit). The first 4 buttons are labeled with
+    names for flags used in rpgs, namely
+    <UL>
+    <LI><Font Color="#4444cc">Obj.Mov.</Font> Object at this position can be moved
+    <LI><Font Color="#4444cc">Chest</Font> Object is a chest and contains treasures
+    <LI><Font Color="#4444cc">Unique</Font> Object at this position is unique
+    <LI><Font Color="#4444cc">Trap</Font> This position/ object is trapped
+    </UL>
+    Since these buttons do just toggle the lowest 4 bits in ObjectFlags, you can
+    use them for other purposes, also.<P>
+    <Font Color="#4444cc">Special</Font> allows you to enter a 16 bit value to
+    store additional information.
+    </TD>
+    <TH Width=10>
+    <TD Align=Left Valign=TOP><IMG SRC="MapAttr.gif" WIDTH="92" HEIGHT="335" BORDER="0"></TD>
+</TR>
+</Table>
+<BR><A Href="#Top"><IMG SRC="MapTop.gif" WIDTH="15" HEIGHT="19" BORDER="0"></A>
+<P>
+
+</TD></TR></Table>
+
+
+<P><BR>
+&copy; 1997 Lennart Steinke&lt;<A Href="mailto:lennart_steinke@bigfoot.com">lennart_steinke@bigfoot.com</A>&gt;
+</Center>
+</BODY>
+</HTML>
+
+
+
+

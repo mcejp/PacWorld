@@ -1,0 +1,225 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Deutsch (Deutschland) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+ABOUTDIALOG DIALOGEX 0, 0, 138, 58
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Info about PacWorld"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,54,36,60,20
+    CONTROL         113,IDC_STATIC,"Static",SS_BITMAP,9,8,24,30
+    CTEXT           "Licensed Full Version v.1.1\n© 2000 Johannes Wallroth",
+                    IDC_STATIC,38,4,93,17
+    CTEXT           "www.programming.de",IDC_URL,49,24,69,8,SS_CENTERIMAGE
+END
+
+IDD_TUTORIAL DIALOG DISCARDABLE  0, 0, 180, 87
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "How to play"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,119,67,60,20
+    EDITTEXT        IDC_EDIT1,0,0,179,68,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_READONLY | WS_VSCROLL
+END
+
+IDD_SETTINGS DIALOGEX 0, 0, 147, 54
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Sound Settings"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,87,29,50,16
+    CONTROL         "Sound on",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON,9,10,
+                    66,8
+    CONTROL         "Crunching off",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,9,
+                    22,66,8
+    CONTROL         "All sounds off",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON,
+                    9,34,62,8
+END
+
+IDD_HIGHSCORE DIALOGEX 0, 0, 156, 73
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Game Over"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,48,50,60,20
+    CTEXT           "Static",IDC_HIGHSCORE,3,5,150,16,SS_CENTERIMAGE,
+                    WS_EX_STATICEDGE
+    CTEXT           "Static",IDC_SCORE,3,27,150,16,SS_CENTERIMAGE,
+                    WS_EX_STATICEDGE
+END
+
+IDD_THANKS DIALOGEX 0, 0, 151, 52
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,51,33,50,16
+    CTEXT           "Static",IDC_TEXT,6,4,139,9,SS_CENTERIMAGE
+    CTEXT           "Static",IDC_TEXT2,6,16,139,9,SS_CENTERIMAGE
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    ABOUTDIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 1
+        RIGHTMARGIN, 131
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 51
+    END
+
+    IDD_TUTORIAL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 173
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 80
+    END
+
+    IDD_SETTINGS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 140
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 47
+    END
+
+    IDD_HIGHSCORE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 149
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 66
+    END
+
+    IDD_THANKS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 144
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 45
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_MAIN_ICON           ICON    DISCARDABLE     "res/icon1.ico"
+IDI_OK                  ICON    DISCARDABLE     "res\\32x32x16_OkBor.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+MAINMENU MENU DISCARDABLE 
+BEGIN
+    POPUP "&Game"
+    BEGIN
+        MENUITEM "&New",                        ID_GAME_NEW
+        MENUITEM SEPARATOR
+        MENUITEM "&Pause\t(P)",                 ID_GAME_PAUSE
+        MENUITEM "&Exit",                       ID_GAME_EXIT
+    END
+    POPUP "&Options"
+    BEGIN
+        MENUITEM "&Sound Settings",             ID_OPTIONS_SETTINGS
+    END
+    POPUP "&Help", HELP
+    BEGIN
+        MENUITEM "&How to play",                ID_HELP_HOWTOPLAY
+        MENUITEM SEPARATOR
+        MENUITEM "&Info about...",              ID_HELP_ABOUT
+    END
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_ME                  BITMAP  DISCARDABLE     "res\\me.BMP"
+#endif    // Deutsch (Deutschland) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

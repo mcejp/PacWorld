@@ -1,0 +1,279 @@
+Autograb- Automatic Sprite Grabber v1.1
+(c) 1997 Lennart Steinke <lennart_steinke@bigfoot.com>
+
+Make sure to read the disclaimer at the end of this document
+------------------------------------------------------------
+
+Contents
+
+	1) About
+		- History
+	2) Conditions of Use
+	3) What does it do ?
+	4) Using autograb
+	5) Supported file formats
+	6) Contacting the author
+
+	APPENDIX A: File formats
+	APPENDIX B: Usefull libs and programms
+	APPENDIX C: DISCLAIMER
+
+
+About
+
+The best sprite/ tile editor I ever had is a paint program
+called improces (see Appendix B for more information about improcess).
+But it wasn't always that easy to convert the images I had drawn
+into sprites. Sure, most gfx-packages include some sort of grabbing util,
+but this introduced extra work every time I changed one pixel in my
+image. So, I programmed autograb. It's a very simple program, and I
+wrote it in a couple of hours, but I consider it usefull.
+
+	History
+
+	v 1.2 (June 1997)       : Bugfixes
+
+	v 1.1 (May 1997)        : Added tile format (*.tle)
+						  Added -size and -pal parameter
+
+	v 1.0                           : First release, jlib and raw output modes
+
+
+Conditions of Use
+
+This programm is freeware, and you can use as you like, give it to
+your friends and install it on every computer you see, as long as
+this document is always copied together with the executable, and all
+copyright notices stay intact.
+MAKE SURE TO READ THE DISCLAIMER AT THE END OF THIS DOCUMENT
+
+
+What does it do?
+
+Autograb checks the image for borders drawn in a specific color,
+and stores the area of these rectangles to disk. If width and height
+are specified, larger images are broken up into several smaller pics,
+and smaller pictures are filled up with color index 0.
+
+So, if you've drawn several images of an exploding spaceship, and
+want to use 6 of them for the actual animation, just draw a rect
+around these 6 images, save it as a .pcx file and let autograb do the
+actual work.
+
+If you've drawn a house, and want to split this pic in several tiles, just
+draw a rect around the house, and call autograb with the -size parameter.
+
+
+
+Using autograb
+
+First, you'll need a PCX file containing the graphics you want,
+then you'll have to draw a bounding rectangle around these gfx in
+a single color (default color index is 255), so autograb can
+distinguish background and image data.
+All data not enclosed by a rect of this color will be ignored.
+
+To grab sprites or tiles from an image, call autograb with the
+name of the PCX file as first parameter, using one or more of
+the following options:
+
+	-o <outfile>
+	The name of the file the grabbed images should be stored in.
+	Default is "autograb.spr", or "autograb.tle" if used in tile mode
+
+	-b <borderIndex>
+	The palette index of the border. This must not be 0.
+	Default is 255 (0xff).
+
+	-v
+	Shows the image (or part of the image) on screen and marks
+	the recognized areas.
+
+
+	-raw
+	Stores the images in RAW format, not in the JLib sprite format
+
+	-pal
+	Stores the palette (this is only usefull in combination with the
+	raw option)
+
+	-tile
+	Stores the images in tile format. All images will be saved with
+	the dimensions specified with the -size parameter or if this
+	paremeter is omitted, with the same size as the first image found.
+
+	-ct
+	Stores the position and size of the images found as ASCII text.
+
+	-cb
+	Stores the position and size of the images found in a binary format
+
+	-size Width Height
+	Specifies the size of the tiles explicitly.
+
+
+
+Examples:
+
+	Grab sprites from the file "monster.pcx", storing the raw data
+	with palette in a file "monster.spr" :
+
+		autograb monster.pcx -raw -pal -o monster.spr
+
+	Grab tiles from "town.pcx", breaking larger images into tiles
+	of 16x16 size, using tile format; output file is town.tle:
+
+		autograb town.pcx -tile -size 16 16 -o town.tle
+
+
+
+Supported file formats
+
+Input : PCX, 256 color (8bit color depth)
+	BMP, 256 color, RGB encoded
+
+Output: JLib Sprite Format, RAW, tile, crd, ascii (see Appendix A, for file specs)
+
+
+Contacting the author
+
+Lennart Steinke
+lennart_steinke@bigfoot.com
+
+Game Programming web page:
+http://www.geocities.com/SiliconValley/Vista/6774
+
+Snail mail:
+Lennart Steinke
+Hofener Str. 16
+74366 Kirchheim /N.
+GERMANY
+
+
+
+
+APPENDIX A: File formats
+
+Terms used:
+	USHORT          unsigned short (16 bit)
+	UBYTE           unsigned char  ( 8 bit)
+
+
+
+JLib sprite format:
+(taken from JLibs spriteio.c)
+
+	USHORT = number of sprite frames in the file.
+
+	for each sprite frame
+	{
+		UBYTE          = width
+		UBYTE          = height
+		(width*height) UBYTES = data
+		UBYTE          = number of bounding rectangles
+
+		for each bounding rect
+		{
+			UBYTE          = x1
+			UBYTE          = y1
+			UBYTE          = x2
+			UBYTE          = y2
+		}
+	}
+
+
+Raw format:
+
+	USHORT = number of frames
+
+	for each frame
+	{
+		USHORT = width
+		USHORT = height
+
+		(width * height) UBYTEs = data
+	}
+
+	| 768 UBYTEs = palette | (1)
+
+	(1) To check if there's a palette, you'll have to check
+		if the size of the file is larger than the sum of
+		all sprite data.
+
+		Range for the color intensity is 0 - 255 (most DOS paint
+		programs use an intensity range of 0 - 63)
+
+
+Tile format:
+
+	USHORT = number of tiles
+	USHORT = width
+	USHORT = height
+
+	768 UBYTEs = palette data
+				 Range for the color intensity is 0 - 255 (most DOS paint
+				 programs use an intensity range of 0 - 63)
+
+	for each tile
+	{
+		(width * height) UBYTEs = data
+	}
+
+
+
+ASCII coordinates
+
+In this format, each line in the text file contains the following
+information: x, y, width, height
+
+
+Binary coordinates
+
+	USHORT = number of areas
+
+	for each area
+	{
+		USHORT = x
+		USHORT = y
+		USHORT = width
+		USHORT = height
+	}
+
+
+APPENDIX B: Usefull programms and libs
+
+	Paint Programms:
+		Improces 4.2
+		------------
+		Nice little DOS programm, it's freeware and great for
+		game purposes.
+		It can be obtained from
+			http://homepages.together.net/~jwag
+
+	Libs:
+		JLib
+		-----
+		Portable gfx and I/O lib.
+		JLib can be obtained from
+			ftp://x2ftp.oulu.fi/pub/msdos/programming/djgpp2
+
+
+	For more information check my web page, esp. the tools section.
+
+
+
+
+APPENDIX C: DISCLAIMER
+
+I've tested this programm, and it worked without crashing my
+computer or deleting data and I tried to make it as secure as
+possible, but :
+
+ I, LENNART STEINKE, DISCLAIM ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL I BE LIABLE
+FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY
+DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
+PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH
+THE USE OR PERFORMANCE OF THIS SOFTWARE.

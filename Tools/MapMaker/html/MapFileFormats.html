@@ -1,0 +1,213 @@
+<HTML>
+<HEAD>
+	<TITLE>MapMaker: File Format Description</TITLE>
+
+<meta name="description" content="MapMaker Online Documentation">
+<meta name="author" content="Lennart Steinke">
+<meta name="keywords" content="games, tile, map, rpg, crpg, programming, game programming">
+
+</HEAD>
+<BODY LINK ="#D00000"
+      VLINK="#A01010"
+      ALINK="#FF1010"
+      BGCOLOR="#FFFFFF"
+>
+<A Name="Top">
+<IMG SRC="MapLogoSmall.gif" WIDTH="150" HEIGHT="60" BORDER="0"></A>
+<Font Color="#4444cc">
+Back to the <A Href="Mapindex.html">Index</A>
+</Font>
+<Center>
+<Table Border=0 CellPadding=0 Width="80%"><TR><TD>
+<P><BR><Center><Font Color="#4444cc"><H1>File Format Description</H1></Font></Center><P>
+<Center>
+<A Href="#Map">Map Format</A> | <A Href="#Tile">Tile Format</A>
+<A Name="Map">
+<P><Center><Font Color="#4444cc"><H2>Map File Format v1.1</H2></Font></Center>
+</A>
+I've marked changes to the last release of this doc with <Font Color="#ff0000">red</Font>
+color.<P><BR>
+</Font><BR>
+<Table Border=3 CellPadding=3>
+<TR>
+    <TH Align=Center ColSpan=3>Header</TH>
+<TR>
+    <TH Align=Center>Size (bytes)</TH>
+    <TH Align=Center>Name </TH>
+    <TH Align=Center> Description</TH>
+<TR>
+    <TD Align=Center><Font Color="#ff0000">4</Font></Td>
+    <TD Align=Center>size</Td>
+    <TD Align=Left  >The size of the header in bytes (= 0x0134)</Td>
+<TR>
+    <TD Align=Center>4</Td>
+    <TD Align=Center>magic</Td>
+    <TD Align=Left  >"MAP" as NULL terminated string</Td>
+<TR>
+    <TD Align=Center>1</Td>
+    <TD Align=Center>version</Td>
+    <TD Align=Left  >Version number (0x01 at the moment)</Td>
+<TR>
+    <TD Align=Center>1</Td>
+    <TD Align=Center>sub version</Td>
+    <TD Align=Left  >Release number (0x01 at the moment)</Td>
+<TR>
+    <TD Align=Center>1</Td>
+    <TD Align=Center>trans_index</Td>
+    <TD Align=Left  >Index of the transparent color</Td>
+<TR>
+    <TD Align=Center><Font Color="#ff0000">1</Font></Td>
+    <TD Align=Center><Font Color="#ff0000">padding</Font></Td>
+    <TD Align=Left  ><Font Color="#ff0000">- reserved -</Font></Td>
+<TR>
+    <TD Align=Center><Font Color="#ff0000">4</Font></Td>
+    <TD Align=Center>width</Td>
+    <TD Align=Left  >Width of the map (in tiles)</Td>
+<TR>
+    <TD Align=Center><Font Color="#ff0000">4</Font></Td>
+    <TD Align=Center>height</Td>
+    <TD Align=Left  >Height of the map (in tiles)</Td>
+<TR>
+    <TD Align=Center>255</Td>
+    <TD Align=Center>path</Td>
+    <TD Align=Left  >Absolute path of the tile file used</Td>
+<TR>
+    <TD Align=Center>32</Td>
+    <TD Align=Center>name</Td>
+    <TD Align=Left  >Name (<Font Color="#ff0000">without extension</Font>) of the tile file used</Td>
+<TR>
+    <TD Align=Center><Font Color="#ff0000">1</Font></Td>
+    <TD Align=Center><Font Color="#ff0000">padding</Font></Td>
+    <TD Align=Left  ><Font Color="#ff0000">- reserved -</Font></Td>
+</TR></Table><BR>
+
+The header is followed by width * height cells.<BR>
+The data starts at offset 0x0134.
+<BR><BR><A Href="#Top"><IMG SRC="MapTop.gif" WIDTH="15" HEIGHT="19" BORDER="0"></A>
+<P>
+
+<Table Border=3 CellPadding=3>
+<TR>
+    <TH Align=Center ColSpan=3>Cell</TH>
+<TR>
+    <TH Align=Center>Size (bytes)</TH>
+    <TH Align=Center>Name </TH>
+    <TH Align=Center>Description</TH>
+<TR>
+    <TD Align=Center>2</Td>
+    <TD Align=Center>base</Td>
+    <TD Align=Left  >Index of the base tile</Td>
+<TR>
+    <TD Align=Center>2</Td>
+    <TD Align=Center>fringe</Td>
+    <TD Align=Left  >Index of the fringe tile</Td>
+<TR>
+
+    <TD Align=Center>2</Td>
+    <TD Align=Center>object</Td>
+    <TD Align=Left  >Index of the object tile</Td>
+<TR>
+
+    <TD Align=Center>2</Td>
+    <TD Align=Center>roof</Td>
+    <TD Align=Left  >Index of the roof tile</Td>
+<TR>
+    <TD Align=Center>1</Td>
+    <TD Align=Center>walkability</Td>
+    <TD Align=Left  >Walkability information</Td>
+<TR>
+    <TD Align=Center>1</Td>
+    <TD Align=Center>walkspecial</Td>
+    <TD Align=Left  >Special walk attributes</Td>
+<TR>
+    <TD Align=Center><Font Color="#ff0000">2</Font></Td>
+    <TD Align=Center><Font Color="#ff0000">padding</Font></Td>
+    <TD Align=Left  ><Font Color="#ff0000">- reserved -</Font></Td>
+<TR>
+    <TD Align=Center>4</Td>
+    <TD Align=Center>flags</Td>
+    <TD Align=Left  >Flags, currently 16 used by MapMaker</Td>
+<TR>
+    <TD Align=Center>4</Td>
+    <TD Align=Center>special</Td>
+    <TD Align=Left  >Additional information</Td>
+</TR></Table>
+
+<BR><BR><A Href="#Top"><IMG SRC="MapTop.gif" WIDTH="15" HEIGHT="19" BORDER="0"></A>
+
+<P>
+
+<Table Border=2>
+
+<TR><TH Align=Center>Walkability and Walkspecial constants</TH>
+
+<TR><TD>
+
+<PRE>
+#define WLK_FREE	0x00		// All of the tile is walkable
+#define WLK_FULL	0x01		// The tile is un- walkable
+#define WLK_LOWER	0x02		// The lower half is walkable
+#define	WLK_UPPER	0x03		// The upper half is walkable
+#define WLK_LEFTUP	0x04		// The Upper- Left half is walkable
+#define WLK_RGHTDWN	0x05		// The Lower- Right half is walkable
+#define WLK_LEFTDWN	0x06		// The Lower- Left half is walkable
+#define WLK_RGHTUP	0x07		// The Upper- Right half is walkable
+
+
+#define WLK_NORTH	0x10		// Can be passed south -> north
+#define WLK_SOUTH	0x20		// Can be passed north -> south
+#define WLK_EAST	0x40		// Can be passed west  -> east
+#define WLK_WEST	0x80		// Can be passed east  -> west
+#define WLK_ALWAYS  	0xf0		// Can be passed in every direction
+</PRE>
+
+
+
+</TD></TR></Table>
+<BR><BR><A Href="#Top"><IMG SRC="MapTop.gif" WIDTH="15" HEIGHT="19" BORDER="0"></A>
+</Center>
+</TD></TR></Table>
+<P>
+<Table Border=0 Width="80%">
+<TR><TD>
+<A Name="Tile">
+<P><Center><Font Color="#4444cc"><H2>Tile File Format</H2></Font></Center></A>
+<Center>
+<Table Border=2>
+<TR><TH Align=Center ColSpan=3>Tile Header</TH>
+<TR>
+    <TH Align=Center>Size (bytes)</TH>
+    <TH Align=Center>Name </TH>
+    <TH Align=Center>Description</TH>
+<TR>
+    <TD Align=Center>2</Td>
+    <TD Align=Center>count</Td>
+    <TD Align=Left  >Number of tiles stored</Td>
+<TR>
+    <TD Align=Center>2</Td>
+    <TD Align=Center>width</Td>
+    <TD Align=Left  >Width of the tiles</Td>
+<TR>
+    <TD Align=Center>2</Td>
+    <TD Align=Center>height</Td>
+    <TD Align=Left  >Height of the tiles</Td>
+<TR>
+    <TD Align=Center>768</Td>
+    <TD Align=Center>palette</Td>
+    <TD Align=Left  >Palette used for the tiles.</Td>
+</TR></Table>
+<P>
+
+The header is followed by <Font Color="#4444cc"><TT>count * (width*height)</TT></Font> bytes, containing the
+raw tile data.<P>
+<A Href="#Top"><IMG SRC="MapTop.gif" WIDTH="15" HEIGHT="19" BORDER="0"></A>
+<P>
+</Center>
+</TD></TR></Table>
+
+
+<P><BR>
+&copy; 1997 Lennart Steinke&lt;<A Href="mailto:lennart_steinke@bigfoot.com">lennart_steinke@bigfoot.com</A>&gt;
+</Center>
+</BODY>
+</HTML>
